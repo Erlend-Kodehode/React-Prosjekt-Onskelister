@@ -27,7 +27,19 @@ const Grid = styled.div`
 `;
 
 const Card = styled.div`
+  background-color: #f8f5ee;
   border-radius: 10px;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: "Shantell Sans", cursive;
+  h2 {
+    font-weight: 400;
+  }
+  h3 {
+    font-weight: 400;
+  }
 `;
 
 let longestWishlist = 0;
@@ -40,17 +52,9 @@ export default function App() {
   return (
     <Main>
       <Title>Øsnkelister</Title>
-      {/* <GoodCheck>
-        <input
-          type="checkbox"
-          id="good-only"
-          onChange={(e) => console.log(e.target.checked)}
-        />
-        <label htmlFor="good-only">Bare snille barn</label>
-      </GoodCheck> */}
       <Grid>
-        {kidsWishlist.map((kid) => (
-          <Card className={kid.naughty ? "bad" : "good"}>
+        {kidsWishlist.map((kid, i) => (
+          <Card key={i} className={kid.naughty ? "bad" : "good"}>
             <CardInfo data={kid} longestListLength={longestWishlist}></CardInfo>
           </Card>
         ))}

@@ -1,22 +1,5 @@
 import styled from "styled-components";
 
-const Card = styled.div`
-  h2 {
-    font-weight: 400;
-  }
-
-  h3 {
-    font-weight: 400;
-  }
-  background-color: #f8f5ee;
-  border-radius: 10px;
-  padding: 1.5em;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  font-family: "Shantell Sans", cursive;
-`;
-
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -60,7 +43,7 @@ const WishItem = styled.li`
   padding-left: 0.5em;
   min-height: 1.5em;
 `;
-
+//TODO remove destructions that are unused
 export default function CardInfo({
   data: { id, name, age, wishlist, naughty },
   longestListLength,
@@ -68,7 +51,7 @@ export default function CardInfo({
   const listLength = longestListLength - wishlist.length;
   for (let i = 0; i < listLength; i++) wishlist.push("");
   return (
-    <Card>
+    <>
       <InfoBox>
         <NameBox>
           <h2>Navn:</h2>
@@ -82,11 +65,11 @@ export default function CardInfo({
       <WishlistBox>
         <h3>Ønskeliste:</h3>
         <ul>
-          {wishlist.map((item) => (
-            <WishItem>{item}</WishItem>
+          {wishlist.map((item, i) => (
+            <WishItem key={i}>{item}</WishItem>
           ))}
         </ul>
       </WishlistBox>
-    </Card>
+    </>
   );
 }
