@@ -12,6 +12,7 @@ const WishlistBox = styled.div`
   gap: 0.5rem;
   ul {
     list-style-type: none;
+    font-size: 0.95em;
   }
 `;
 
@@ -40,9 +41,14 @@ const AgeBox = styled.div`
 const WishItem = styled.li`
   border-bottom: 1px solid black;
   font-family: "Schoolbell", cursive;
-  padding-left: 0.5em;
+  padding-left: ${(props) => props.offset}em;
   min-height: 1.5em;
 `;
+
+//TODO mer dekrasjoner inne i kortene
+
+const minOffset = 0.3;
+const maxOffset = 6;
 //TODO remove destructions that are unused
 export default function CardInfo({
   data: { id, name, age, wishlist, naughty },
@@ -66,7 +72,12 @@ export default function CardInfo({
         <h3>Ønskeliste:</h3>
         <ul>
           {wishlist.map((item, i) => (
-            <WishItem key={i}>{item}</WishItem>
+            <WishItem
+              key={i}
+              offset={Math.floor(Math.random() * maxOffset) / 10 + minOffset}
+            >
+              {item}
+            </WishItem>
           ))}
         </ul>
       </WishlistBox>

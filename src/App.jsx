@@ -1,10 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import CardInfo from "./Card.jsx";
 import { kidsWishlist } from "./wishlist.jsx";
+import decoration from "/christmas-decoration-clipart.svg";
+import spark from "/Star.png";
 
 const Title = styled.h1`
   font-family: "Mountains of Christmas", serif;
 `;
+
+//TODO more styling outside the cards
+
 const Main = styled.main`
   display: flex;
   flex-direction: column;
@@ -18,17 +23,50 @@ const Grid = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   width: 85%;
-  .good {
-    border: 2px solid lime;
+`;
+
+const CardBackground = styled.div`
+  border-radius: 1rem;
+  padding: 0.7rem;
+  background-image: url("/Card_Background.png");
+  //TODO better good effect
+  border: 2px solid ${(props) => (props.$naughty ? "lightcoral" : "gold")};
+  position: relative;
+`;
+
+const DecorationImg = styled.img`
+  position: absolute;
+  top: -1em;
+  right: 50%;
+  transform: translate(50%);
+  height: 18%;
+`;
+
+const SparkAnim = keyframes`
+  0%{
+    transform: scale(0)
   }
-  .bad {
-    border: 2px solid lightcoral;
+
+  50%{
+    transform: scale(1)
+  }
+
+  100%{
+    transform: scale(0)
   }
 `;
 
+const SparkImg = styled.img`
+  transform: scale(0);
+  animation: ${SparkAnim} 600ms cubic-bezier(0.65, 0.16, 0.28, 0.79) 1s infinite;
+  width: 15%;
+  position: absolute;
+`;
+
 const Card = styled.div`
+  border: 2px #f1e8d6 solid;
   background-color: #f8f5ee;
-  border-radius: 10px;
+  border-radius: 0.5rem;
   padding: 1.5em;
   display: flex;
   flex-direction: column;
@@ -54,9 +92,16 @@ export default function App() {
       <Title>Øsnkelister</Title>
       <Grid>
         {kidsWishlist.map((kid, i) => (
-          <Card key={i} className={kid.naughty ? "bad" : "good"}>
-            <CardInfo data={kid} longestListLength={longestWishlist}></CardInfo>
-          </Card>
+          <CardBackground key={i} $naughty={kid.naughty}>
+            <DecorationImg src={decoration}></DecorationImg>
+            <Card>
+              <CardInfo
+                data={kid}
+                longestListLength={longestWishlist}
+              ></CardInfo>
+              <SparkImg src={spark}></SparkImg>
+            </Card>
+          </CardBackground>
         ))}
       </Grid>
     </Main>
