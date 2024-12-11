@@ -45,13 +45,10 @@ const WishItem = styled.li`
   min-height: 1.5em;
 `;
 
-//TODO mer dekrasjoner inne i kortene
-
 const minOffset = 0.3;
 const maxOffset = 6;
-//TODO remove destructions that are unused
 export default function CardInfo({
-  data: { id, name, age, wishlist, naughty },
+  data: { name, age, wishlist },
   longestListLength,
 }) {
   const listLength = longestListLength - wishlist.length;
