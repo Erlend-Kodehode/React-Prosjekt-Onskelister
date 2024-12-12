@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const InfoBox = styled.div`
+const NameAgeBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,8 +16,10 @@ const WishlistBox = styled.div`
   }
 `;
 
-const NameBox = styled.div`
+const InfoBox = styled.div`
   display: flex;
+  width: 100%;
+  justify-content: center;
 `;
 
 const WishlistName = styled.h2`
@@ -27,15 +29,8 @@ const WishlistName = styled.h2`
   width: 5em;
 `;
 
-const WishlistAge = styled.h3`
-  border-bottom: 1px solid black;
-  font-family: "Schoolbell", cursive;
-  padding-left: 0.7em;
+const WishlistAge = styled(WishlistName)`
   width: 7em;
-`;
-
-const AgeBox = styled.div`
-  display: flex;
 `;
 
 const WishItem = styled.li`
@@ -47,6 +42,7 @@ const WishItem = styled.li`
 
 const minOffset = 0.3;
 const maxOffset = 6;
+
 export default function CardInfo({
   data: { name, age, wishlist },
   longestListLength,
@@ -55,16 +51,16 @@ export default function CardInfo({
   for (let i = 0; i < listLength; i++) wishlist.push("");
   return (
     <>
-      <InfoBox>
-        <NameBox>
+      <NameAgeBox>
+        <InfoBox>
           <h2>Navn:</h2>
           <WishlistName>{name}</WishlistName>
-        </NameBox>
-        <AgeBox>
+        </InfoBox>
+        <InfoBox>
           <h3>Alder:</h3>
-          <WishlistAge>{age} år gammel</WishlistAge>
-        </AgeBox>
-      </InfoBox>
+          <WishlistAge as="h3">{age} år gammel</WishlistAge>
+        </InfoBox>
+      </NameAgeBox>
       <WishlistBox>
         <h3>Ønskeliste:</h3>
         <ul>

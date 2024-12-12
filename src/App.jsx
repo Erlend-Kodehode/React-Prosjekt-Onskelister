@@ -16,15 +16,39 @@ const Title = styled.h1`
   font-family: "Mountains of Christmas", serif;
   color: #fef4e6;
   font-size: 4em;
+  @media only screen and (max-width: 650px) {
+    font-size: 2em;
+  }
+  @media only screen and (max-width: 350px) {
+    font-size: 1.5em;
+  }
 `;
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 25%);
   gap: 1rem;
   width: 85%;
-`;
 
+  @media only screen and (max-width: 1165px) {
+    grid-template-columns: repeat(3, 33%);
+  }
+
+  @media only screen and (max-width: 950px) {
+    grid-template-columns: repeat(2, 50%);
+    width: 70%;
+  }
+
+  @media only screen and (max-width: 720px) {
+    width: 85%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
 const CardBackground = styled.div`
   border-radius: 1rem;
   padding: 0.7rem;
@@ -102,7 +126,7 @@ export default function App() {
   return (
     <>
       <Main>
-        <Title>Øsnkelister</Title>
+        <Title>Øsnkelister for Julenissen</Title>
         <Grid>
           {kidsWishlist.map((kid, i) => (
             <CardBackground key={i}>
