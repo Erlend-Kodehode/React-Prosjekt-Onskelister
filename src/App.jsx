@@ -4,15 +4,15 @@ import { kidsWishlist } from "./wishlist.jsx";
 import decoration from "/christmas-decoration-clipart.svg";
 import spark from "/Star.png";
 import hat from "/santa-hat-icon-original.svg";
+import backgroundImg from "/Card_Background.svg";
+import ballStamp from "/stamps/christmas-ball-silhouette.svg";
+import bellStamp from "/stamps/christmas-bell-silhouette.svg";
+import sockStamp from "/stamps/christmas-sock-silhouette.svg";
+import treeStamp from "/stamps/christmas-tree-silhouette.svg";
+import snowmanStamp from "/stamps/snowman-silhouette.svg";
 
 //array of images to use as background images on the cards
-const stamps = [
-  "christmas-ball-silhouette.svg",
-  "christmas-bell-silhouette.svg",
-  "christmas-sock-silhouette.svg",
-  "christmas-tree-silhouette.svg",
-  "snowman-silhouette.svg",
-];
+const stamps = [ballStamp, bellStamp, sockStamp, treeStamp, snowmanStamp];
 
 const Main = styled.main`
   display: flex;
@@ -74,7 +74,7 @@ const Grid = styled.div`
 const CardBackground = styled.div`
   border-radius: 1rem;
   padding: 0.7rem;
-  background-image: url("/Card_Background.svg");
+  background-image: url("${backgroundImg}");
   position: relative;
 `;
 
@@ -91,8 +91,9 @@ const DecorationImg = styled.img`
 
 const Card = styled.div`
   //gets the background image from a property on the component so it can be randomized uniquely for each card
-  background: #f8f5ee url("/stamps/${(props) => props.$stamp}") no-repeat 86%
-    91%/15%;
+  background: #f8f5ee url("${(props) => props.$stamp}") no-repeat 86% 91%/15%;
+
+  background-color: #f8f5ee;
 
   //gives a special border to the good children
   border: 2px solid ${(props) => (props.$naughty ? "#f1e8d6" : "#f7e268")};
