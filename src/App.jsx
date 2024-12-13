@@ -157,7 +157,7 @@ export default function App() {
     <Main>
       <Title>
         <HatImg src={hat} />
-        Øsnkelister for Julenissen
+        Ønskelister for Julenissen
       </Title>
       <Grid>
         {kidsWishlist.map((kid, i) => (
