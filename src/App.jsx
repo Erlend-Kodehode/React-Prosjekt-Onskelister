@@ -1,18 +1,8 @@
 import styled, { keyframes } from "styled-components";
 import CardContents from "./Card.jsx";
-import { kidsWishlist } from "./wishlist.jsx";
-import decoration from "/christmas-decoration-clipart.svg";
-import spark from "/Star.png";
-import hat from "/santa-hat-icon-original.svg";
-import backgroundImg from "/Card_Background.svg";
-import ballStamp from "/stamps/christmas-ball-silhouette.svg";
-import bellStamp from "/stamps/christmas-bell-silhouette.svg";
-import sockStamp from "/stamps/christmas-sock-silhouette.svg";
-import treeStamp from "/stamps/christmas-tree-silhouette.svg";
-import snowmanStamp from "/stamps/snowman-silhouette.svg";
-
-//array of images to use as background images on the cards
-const stamps = [ballStamp, bellStamp, sockStamp, treeStamp, snowmanStamp];
+import kidsWishlist from "./wishlist.jsx";
+import { backgroundImg, hat, spark, decoration } from "./images.jsx";
+import stamps from "./stamps.jsx";
 
 const Main = styled.main`
   display: flex;
